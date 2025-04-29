@@ -1,0 +1,25 @@
+{
+  "name": "tp-graphql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type":"module",
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eyamhamdi03/TP2-GraphQL.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eyamhamdi03/TP2-GraphQL/issues"
+  },
+  "homepage": "https://github.com/eyamhamdi03/TP2-GraphQL#readme",
+  "dependencies": {
+    "graphql-yoga": "^5.13.4"
+  }
+}
