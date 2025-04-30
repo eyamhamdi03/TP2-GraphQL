@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -e js,mjs,json,graphql src/index.js"
   },
-  "type":"module",
-
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/eyamhamdi03/TP2-GraphQL.git"
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/eyamhamdi03/TP2-GraphQL#readme",
   "dependencies": {
+    "@graphql-tools/load-files": "^7.0.1",
     "graphql-yoga": "^5.13.4"
   }
 }

@@ -1,0 +1,42 @@
+enum Role {
+  USER
+  ADMIN
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  age: Int
+  role: Role!
+}
+
+type Skill {
+  id: ID!
+  designation: String!
+}
+
+type CV {
+  id: ID!
+  name: String!
+  age: Int
+  job: String!
+  owner: User!
+  skills: [Skill!]!
+}
+
+type Query {
+  hello(name: String): String
+  GetCvs: [CV!]!
+  GetCv(id: ID!): CV
+  GetUsers: [User!]!
+  GetUser(id: ID!): User
+  GetSkills: [Skill!]!
+  GetSkill(id: ID!): Skill
+  GetUserByEmail(email: String!): User
+  GetUserByName(name: String!): User
+  GetCvByName(name: String!): CV
+  GetCvByJob(job: String!): CV
+  GetCvByOwner(owner: ID!): CV  
+
+}
