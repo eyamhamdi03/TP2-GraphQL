@@ -54,7 +54,20 @@ export const Mutation ={
         if (job !== undefined) cv.job = job;
 
         return cv;
+    },
+    DeleteCv: (parent, { id }) => {
+        const cvIndex = db.cvs.findIndex((cv) => cv.id == id);
+    
+        if (cvIndex === -1) {
+            throw new Error(`CV with id ${id} not found`);
+        }
+    
+        const deletedCv = db.cvs[cvIndex];
+        db.cvs.splice(cvIndex, 1);
+    
+        return deletedCv;
     }
+    
 };
 
 
