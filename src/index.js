@@ -5,6 +5,8 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { Cv } from './resolvers/Cv.mjs'
 import { User } from './resolvers/User.mjs'
+import { db } from './db/db.mjs'
+import { Mutation } from './resolvers/Mutation.mjs'
 
 const typeDefs = fs.readFileSync(path.resolve('src/schema/schema.graphql'), 'utf-8')
 
@@ -13,9 +15,8 @@ const yoga = createYoga({
     typeDefs,
     resolvers: {
       Query,
-      Cv,
-      User
-    }
+      Cv,User,Mutation
+    },
   })
 })
 

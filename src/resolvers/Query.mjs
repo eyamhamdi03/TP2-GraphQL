@@ -47,6 +47,7 @@ export const Query = {
       cv.skillIds.includes(skillId)
     );
   },
+
   GetSkills: () => db.skills,
 
   GetSkill: (parent, { id }) => {
