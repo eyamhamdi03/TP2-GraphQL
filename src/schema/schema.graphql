@@ -44,8 +44,23 @@ type Query {
   GetSkillsByName(name: String!): [Skill!]!
 }
 type Mutation {
-  CreateCv(name: String!, age: Int!, job: String!, ownerId: ID!,    skillIds: [Int!]!
-): Cv!
-  UpdateCv(id: ID!, name: String, age: Int, job: String): Cv!
+  CreateCv(input: CreateCvInput!): Cv!
+  UpdateCv(input: UpdateCvInput!): Cv!
   DeleteCv(id: ID!): Cv!
+}
+input CreateCvInput {
+  name: String!
+  age: Int!
+  job: String!
+  ownerId: Int!
+  skillIds: [Int!]!
+}
+
+input UpdateCvInput {
+  id: Int!
+  name: String
+  age: Int
+  job: String
+  ownerId: Int
+  skillIds: [Int!]
 }
