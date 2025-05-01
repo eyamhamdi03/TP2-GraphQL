@@ -1,0 +1,92 @@
+export const db = {
+  users: [
+    {
+      id: 1,
+      name: 'eya',
+      email: 'eyamhamdi2003@gmail.com',
+      age: 20,
+      role: 'USER',
+    },
+    {
+      id: 2,
+      name: 'ahmed',
+      email: 'ahmed@gmail.com',
+      age: 25,
+      role: 'USER',
+    },
+    {
+      id: 3,
+      name: 'mayar',
+      email: 'mayar@gmail.com',
+      age: 22,
+      role: 'ADMIN',
+    },
+    {
+      id: 4,
+      name: 'moatez',
+      email: 'moatez@gmail.com',
+      age: 24,
+      role: 'USER',
+    },
+    {
+      id: 5,
+      name: 'nour',
+      email: 'nour@gmail.com',
+      age: 23,
+      role: 'USER',
+    },
+  ],
+
+  skills: [
+    { id: 1, designation: 'JavaScript' },
+    { id: 2, designation: 'TypeScript' },
+    { id: 3, designation: 'React' },
+    { id: 4, designation: 'Node.js' },
+    { id: 5, designation: 'GraphQL' },
+    { id: 6, designation: 'Python' },
+    { id: 7, designation: 'Docker' },
+  ],
+
+  cvs: [
+    {
+      id: 1,
+      name: 'Eya Dev CV',
+      age: 20,
+      job: 'Frontend Developer',
+      ownerId: 1,
+      skillIds: [1, 2, 3], 
+    },
+    {
+      id: 2,
+      name: 'Ahmed Backend CV',
+      age: 25,
+      job: 'Backend Developer',
+      ownerId: 2,
+      skillIds: [4, 5], 
+    },
+    {
+      id: 3,
+      name: 'Mayar Fullstack CV',
+      age: 22,
+      job: 'Fullstack Developer',
+      ownerId: 3, 
+      skillIds: [1, 2, 3, 4, 5],
+    },
+    {
+      id: 4,
+      name: 'Moatez Data CV',
+      age: 24,
+      job: 'Data Scientist',
+      ownerId: 4, 
+      skillIds: [6], 
+    },
+    {
+      id: 5,
+      name: 'Nour DevOps CV',
+      age: 23,
+      job: 'DevOps Engineer',
+      ownerId: 5, 
+      skillIds: [7, 4], 
+    },
+  ],
+};

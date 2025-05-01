@@ -9,6 +9,7 @@ type User {
   email: String!
   age: Int
   role: Role!
+  Cvs: [Cv!]!
 }
 
 type Skill {
@@ -16,7 +17,7 @@ type Skill {
   designation: String!
 }
 
-type CV {
+type Cv {
   id: ID!
   name: String!
   age: Int
@@ -24,19 +25,21 @@ type CV {
   owner: User!
   skills: [Skill!]!
 }
-
 type Query {
-  hello(name: String): String
-  GetCvs: [CV!]!
-  GetCv(id: ID!): CV
   GetUsers: [User!]!
-  GetUser(id: ID!): User
+  GetUserById(id: ID!): User
+  GetUserByEmail(email: String!): User
+  GetUserByName(name: String!): [User!]!
+  GetUsersByAge(age: Int!): [User!]!
+
+  GetCvs: [Cv!]!
+  GetCv(id: ID!): Cv
+  GetCvByName(name: String!): [Cv!]!
+  GetCvByJob(job: String!): [Cv!]!
+  GetCvByOwnerId(ownerId: ID!): [Cv!]!
+  GetCvsBySkill(skillId: ID!): [Cv!]!
+
   GetSkills: [Skill!]!
   GetSkill(id: ID!): Skill
-  GetUserByEmail(email: String!): User
-  GetUserByName(name: String!): User
-  GetCvByName(name: String!): CV
-  GetCvByJob(job: String!): CV
-  GetCvByOwner(owner: ID!): CV  
-
+  GetSkillsByName(name: String!): [Skill!]!
 }
