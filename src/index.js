@@ -1,27 +1,41 @@
-import { createServer } from 'node:http'
-import {Query} from './resolvers/Query.mjs'
-import { createSchema, createYoga } from 'graphql-yoga'
-import fs from 'node:fs'
-import path from 'node:path'
-import { Cv } from './resolvers/Cv.mjs'
-import { User } from './resolvers/User.mjs'
-import { db } from './db/db.mjs'
-import { Mutation } from './resolvers/Mutation.mjs'
+import { createServer } from 'node:http';
+import { createYoga } from 'graphql-yoga';
+import { createSchema } from 'graphql-yoga';
+import { PubSub } from 'graphql-subscriptions';
+import fs from 'node:fs';
+import path from 'node:path';
+import { Query } from './resolvers/Query.mjs';
+import { Cv } from './resolvers/Cv.mjs';
+import { User } from './resolvers/User.mjs';
+import { Mutation } from './resolvers/Mutation.mjs';
+import { Subscription } from './resolvers/Subscription.mjs';
+import { db } from './db/db.mjs';
 
-const typeDefs = fs.readFileSync(path.resolve('src/schema/schema.graphql'), 'utf-8')
+const typeDefs = fs.readFileSync(
+  path.resolve('src/schema/schema.graphql'),
+  'utf-8'
+);
+
+const pubsub = new PubSub();
 
 const yoga = createYoga({
   schema: createSchema({
     typeDefs,
     resolvers: {
       Query,
-      Cv,User,Mutation
+      Mutation,
+      Cv,
+      User,
+      Subscription,
     },
-  })
-})
+  }),
+  context: () => ({ db, pubsub }),
+  graphqlEndpoint: '/graphql',
+  cors: true,
+});
 
-const server = createServer(yoga)
+const server = createServer(yoga);
 
 server.listen(4000, () => {
-  console.log('Server is running on http://localhost:4000/graphql')
-})
+  console.log('Server ready at http://localhost:4000/graphql');
+});

@@ -1,3 +1,28 @@
+
+type Mutation {
+  CreateCv(input: CreateCvInput!): Cv!
+  UpdateCv(input: UpdateCvInput!): Cv!
+  DeleteCv(id: ID!): Cv!
+  triggerCvEvent: Boolean
+
+}
+
+enum CvEventType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+type CvEvent {
+  type: CvEventType!
+  cv: Cv!
+}
+
+type Subscription {
+  cvChanged: CvEvent!
+
+}
+
 enum Role {
   USER
   ADMIN
@@ -43,11 +68,7 @@ type Query {
   GetSkill(id: ID!): Skill
   GetSkillsByName(name: String!): [Skill!]!
 }
-type Mutation {
-  CreateCv(input: CreateCvInput!): Cv!
-  UpdateCv(input: UpdateCvInput!): Cv!
-  DeleteCv(id: ID!): Cv!
-}
+
 input CreateCvInput {
   name: String!
   age: Int!
@@ -64,3 +85,5 @@ input UpdateCvInput {
   ownerId: Int
   skillIds: [Int!]
 }
+
+
