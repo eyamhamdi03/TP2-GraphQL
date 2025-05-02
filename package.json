@@ -21,6 +21,7 @@
   "homepage": "https://github.com/eyamhamdi03/TP2-GraphQL#readme",
   "dependencies": {
     "@graphql-tools/load-files": "^7.0.1",
-    "graphql-yoga": "^5.13.4"
+    "graphql-subscriptions": "^2.0.0",
+    "graphql-yoga": "^3.9.1"
   }
 }
