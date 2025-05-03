@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -e js,mjs,json,graphql src/index.js"
-  },
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "start": "prisma generate && nodemon -e js,mjs,json,graphql src/index.js",
+  "dev": "prisma generate && nodemon -e js,mjs,json,graphql src/index.js"
+},
   "type": "module",
   "repository": {
     "type": "git",

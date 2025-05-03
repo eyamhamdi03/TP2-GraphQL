@@ -1,8 +1,5 @@
-// prisma/schema.prisma
-
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -19,21 +16,22 @@ model User {
   id    Int    @id @default(autoincrement())
   name  String
   email String @unique
+  age   Int?
   role  Role
-  cvs   Cv[]
+  cvs   Cv[]   /
 }
 
 model Cv {
   id        Int      @id @default(autoincrement())
   name      String
+  age       Int
   job       String
-  userId    Int
-  user      User     @relation(fields: [userId], references: [id])
+  owner     User     @relation(fields: [userId], references: [id]) 
   skills    Skill[]  @relation("CvSkills")
 }
 
 model Skill {
-  id    Int    @id @default(autoincrement())
-  name  String
-  cvs   Cv[]   @relation("CvSkills")
+  id          Int    @id @default(autoincrement())
+  designation String
+  cvs         Cv[]   @relation("CvSkills")  // This is the reverse relation to Cv
 }

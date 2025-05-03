@@ -4,7 +4,10 @@ type Mutation {
   UpdateCv(input: UpdateCvInput!): Cv!
   DeleteCv(id: ID!): Cv!
   triggerCvEvent: Boolean
-
+ # Prisma-based mutations
+  CreateCvWithPrisma(input: CreateCvInput!): Cv!
+  UpdateCvWithPrisma(input: UpdateCvInput!): Cv!
+  DeleteCvWithPrisma(id: Int!): Cv!
 }
 
 enum CvEventType {
@@ -73,6 +76,7 @@ type Query {
   prismaGetUserById(id: Int!): User
   prismaGetCvs: [Cv!]!
   prismaGetCv(id: Int!): Cv
+  
 }
 
 input CreateCvInput {
@@ -91,5 +95,10 @@ input UpdateCvInput {
   ownerId: Int
   skillIds: [Int!]
 }
+
+type Subscription {
+  cvChanged: CvEvent
+}
+
 
 

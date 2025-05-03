@@ -10,15 +10,15 @@ import { User } from './resolvers/User.mjs';
 import { Mutation } from './resolvers/Mutation.mjs';
 import { Subscription } from './resolvers/Subscription.mjs';
 import { db } from './db/db.mjs';
-import { PrismaClient } from '@prisma/client';
-
+import pkg from "@prisma/client";
+const { PrismaClient } = pkg;
+const prisma=new PrismaClient();
 const typeDefs = fs.readFileSync(
   path.resolve('src/schema/schema.graphql'),
   'utf-8'
 );
 
 const pubsub = new PubSub();
-const prisma=new PrismaClient()
 const yoga = createYoga({
   schema: createSchema({
     typeDefs,
