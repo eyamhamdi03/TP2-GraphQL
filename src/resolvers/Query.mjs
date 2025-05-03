@@ -1,4 +1,7 @@
 import { db } from "../db/db.mjs";
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 export const Query = {
   GetUsers: () => db.users,
@@ -60,5 +63,29 @@ export const Query = {
     return db.skills.filter((skill) =>
       skill.designation.toLowerCase().includes(name.toLowerCase())
     );
+  },
+  prismaGetUsers: async () => {
+    return await prisma.user.findMany();
+  },
+
+  prismaGetUserById: async (parent, { id }) => {
+    const user = await prisma.user.findUnique({ where: { id } });
+    if (!user) throw new Error(`User with id ${id} not found`);
+    return user;
+  },
+
+  prismaGetCvs: async () => {
+    return await prisma.cv.findMany({
+      include: { user: true, skills: true },
+    });
+  },
+
+  prismaGetCv: async (parent, { id }) => {
+    const cv = await prisma.cv.findUnique({
+      where: { id },
+      include: { user: true, skills: true },
+    });
+    if (!cv) throw new Error(`CV with id ${id} not found`);
+    return cv;
   },
 };

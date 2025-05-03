@@ -67,6 +67,12 @@ type Query {
   GetSkills: [Skill!]!
   GetSkill(id: ID!): Skill
   GetSkillsByName(name: String!): [Skill!]!
+
+
+  prismaGetUsers: [User!]!
+  prismaGetUserById(id: Int!): User
+  prismaGetCvs: [Cv!]!
+  prismaGetCv(id: Int!): Cv
 }
 
 input CreateCvInput {

@@ -21,7 +21,15 @@
   "homepage": "https://github.com/eyamhamdi03/TP2-GraphQL#readme",
   "dependencies": {
     "@graphql-tools/load-files": "^7.0.1",
+    "@graphql-yoga/node": "^3.9.1",
+    "@prisma/client": "^6.7.0",
+    "class-validator": "^0.14.2",
+    "graphql": "^16.11.0",
     "graphql-subscriptions": "^2.0.0",
-    "graphql-yoga": "^3.9.1"
+    "graphql-yoga": "^3.9.1",
+    "type-graphql": "^2.0.0-rc.2"
+  },
+  "devDependencies": {
+    "prisma": "^6.7.0"
   }
 }

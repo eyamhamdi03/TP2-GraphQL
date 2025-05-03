@@ -10,6 +10,7 @@ import { User } from './resolvers/User.mjs';
 import { Mutation } from './resolvers/Mutation.mjs';
 import { Subscription } from './resolvers/Subscription.mjs';
 import { db } from './db/db.mjs';
+import { PrismaClient } from '@prisma/client';
 
 const typeDefs = fs.readFileSync(
   path.resolve('src/schema/schema.graphql'),
@@ -17,7 +18,7 @@ const typeDefs = fs.readFileSync(
 );
 
 const pubsub = new PubSub();
-
+const prisma=new PrismaClient()
 const yoga = createYoga({
   schema: createSchema({
     typeDefs,
@@ -29,7 +30,7 @@ const yoga = createYoga({
       Subscription,
     },
   }),
-  context: () => ({ db, pubsub }),
+  context: () => ({ db, pubsub,prisma }),
   graphqlEndpoint: '/graphql',
   cors: true,
 });
